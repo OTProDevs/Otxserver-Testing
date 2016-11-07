@@ -54,7 +54,7 @@ void ProtocolGameBase::onConnect()
 	output->skipBytes(-12);
 	output->add<uint32_t>(adlerChecksum(output->getOutputBuffer() + sizeof(uint32_t), 8));
 
-	send(std::move(output));
+	(std::move(output));
 }
 
 void ProtocolGameBase::AddOutfit(NetworkMessage& msg, const Outfit_t& outfit)
@@ -703,6 +703,7 @@ void ProtocolGameBase::sendBasicData()
 	msg.addByte(player->isPremium() ? 0x01 : 0x00);
 	msg.add<uint32_t>(std::numeric_limits<uint32_t>::max());
 	msg.addByte(player->getVocation()->getClientId());
+	msg.addByte(1); // has reached Main (allow player to open Prey window)
 	msg.add<uint16_t>(0x00);
 	writeToOutputBuffer(msg);
 }
