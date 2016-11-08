@@ -719,16 +719,6 @@ ShootType_t getShootType(const std::string& strValue)
 	return CONST_ANI_NONE;
 }
 
-CombatType_t getCombatType(const std::string& strValue)
-{
-	for (size_t i = 0, size = sizeof(combatTypeNames) / sizeof(CombatTypeNames); i < size; ++i) {
-		if (strcasecmp(strValue.c_str(), combatTypeNames[i].name) == 0) {
-			return combatTypeNames[i].combat;
-		}
-	}
-	return COMBAT_NONE;
-}
-
 std::string getCombatName(CombatType_t combatType)
 {
 	auto combatName = combatTypeNames.find(combatType);
