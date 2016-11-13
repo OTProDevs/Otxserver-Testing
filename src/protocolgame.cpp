@@ -1755,8 +1755,6 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId)
 		msg.add<uint16_t>(0x00);
 	}
 
-	msg.add<uint16_t>(0x00); // imbuement detail
-
 	MarketStatistics* statistics = IOMarket::getInstance()->getPurchaseStatistics(itemId);
 	if (statistics) {
 		msg.addByte(0x01);
