@@ -2387,7 +2387,7 @@ void Game::playerUpdateHouseWindow(uint32_t playerId, uint8_t listId, uint32_t w
 	uint32_t internalListId;
 
 	House* house = player->getEditHouse(internalWindowTextId, internalListId);
-	if ((house && house->canEditAccessList(internalListId, player) && internalWindowTextId == windowTextId && listId == 0) || (player->getOperatingSystem() == CLIENTOS_FLASH && listId == 255)) {
+	if (house && house->canEditAccessList(internalListId, player) && internalWindowTextId == windowTextId && listId == 0) {
 		house->setAccessList(internalListId, text);
 	}
 

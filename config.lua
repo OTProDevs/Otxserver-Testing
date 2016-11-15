@@ -24,7 +24,7 @@ maxPlayers = 0
 motd = "Welcome to The OTX Global Server!"
 onePlayerOnlinePerAccount = true
 allowClones = false
-serverName = "OTXServer"
+serverName = "OTXGLOBAL"
 statusTimeout = 5 * 1000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 100
@@ -39,7 +39,7 @@ expertPvp = false
 -- Version Manual
 clientVersionMin = 1098
 clientVersionMax = 1099
-clientVersionStr = "10.98-11.00"
+clientVersionStr = "10.98/99"
 
 -- Depot Limit
 freeDepotLimit = 2000
@@ -79,8 +79,8 @@ maxMarketOffersAtATimePerPlayer = 100
 -- MySQL
 mysqlHost = "127.0.0.1"
 mysqlUser = "root"
-mysqlPass = "teste"
-mysqlDatabase = "exclusive"
+mysqlPass = ""
+mysqlDatabase = ""
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"
@@ -122,5 +122,5 @@ startupDatabaseOptimization = true
 -- Status server information
 ownerName = "Malucooo"
 ownerEmail = "e_nunes@live.com"
-url = "http://www.github.com/malucooo/"
-location = "Maceió-Alagoas-Brasil"
+url = "https://github.com/malucooo/otxserver-testing/"
+location = "Brasil"
