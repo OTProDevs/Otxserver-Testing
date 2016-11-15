@@ -39,7 +39,7 @@ expertPvp = false
 -- Version Manual
 clientVersionMin = 1098
 clientVersionMax = 1099
-clientVersionStr = "10.98/99"
+clientVersionStr = "Only clients with protocol 10.98/99 or allowed!"
 
 -- Depot Limit
 freeDepotLimit = 2000
@@ -83,7 +83,6 @@ mysqlPass = ""
 mysqlDatabase = ""
 mysqlPort = 3306
 mysqlSock = ""
-passwordType = "sha1"
 
 -- Misc.
 allowChangeOutfit = true
