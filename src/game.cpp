@@ -911,11 +911,6 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		return;
 	}
 
-	if (item->getActionId() == 10) {
-		player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
-		return;
-	}
-
 	const Position& playerPos = player->getPosition();
 	const Position& mapFromPos = fromCylinder->getTile()->getPosition();
 	if (playerPos.z != mapFromPos.z) {
@@ -3023,7 +3018,7 @@ void Game::playerFollowCreature(uint32_t playerId, uint32_t creatureId)
 	player->setFollowCreature(getCreatureByID(creatureId));
 }
 
-void Game::playerSetFightModes(uint32_t playerId, fightMode_t fightMode, chaseMode_t chaseMode, bool secureMode)
+void Game::playerSetFightModes(uint32_t playerId, fightMode_t fightMode, bool chaseMode, bool secureMode)
 {
 	Player* player = getPlayerByID(playerId);
 	if (!player) {
@@ -3830,7 +3825,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 			TextMessage message;
 			message.position = targetPos;
 			message.primary.value = realHealthChange;
-			message.primary.color = TEXTCOLOR_MAYARED;
+			message.primary.color = TEXTCOLOR_MAYABLUE;
 
 			SpectatorVec list;
 			map.getSpectators(list, targetPos, false, true);
@@ -4733,8 +4728,7 @@ bool Game::loadExperienceStages()
 		if (strcasecmp(stageNode.name(), "config") == 0) {
 			stagesEnabled = stageNode.attribute("enabled").as_bool();
 		} else {
-			uint32_t minLevel, maxLevel;
-			float multiplier;
+			uint32_t minLevel, maxLevel, multiplier;
 
 			pugi::xml_attribute minLevelAttribute = stageNode.attribute("minlevel");
 			if (minLevelAttribute) {
@@ -4754,7 +4748,7 @@ bool Game::loadExperienceStages()
 
 			pugi::xml_attribute multiplierAttribute = stageNode.attribute("multiplier");
 			if (multiplierAttribute) {
-				multiplier = pugi::cast<float>(multiplierAttribute.value());
+				multiplier = pugi::cast<uint32_t>(multiplierAttribute.value());
 			} else {
 				multiplier = 1;
 			}

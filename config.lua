@@ -27,10 +27,10 @@ allowClones = false
 serverName = "OTXGLOBAL"
 statusTimeout = 5 * 1000
 replaceKickOnLogin = true
-maxPacketsPerSecond = 100
+maxPacketsPerSecond = 300
 
 -- Store in-Game Config
-coinPacketSize = 25
+coinPacketSize = 50
 coinImagesURL = "http://localhost/images/store/"
 
 -- PVP-Expert Config
@@ -39,7 +39,11 @@ expertPvp = false
 -- Version Manual
 clientVersionMin = 1098
 clientVersionMax = 1099
+<<<<<<< HEAD
+clientVersionStr = "10.99"
+=======
 clientVersionStr = "Only clients with protocol 10.98/99 or allowed!"
+>>>>>>> origin/master
 
 -- Depot Limit
 freeDepotLimit = 2000
