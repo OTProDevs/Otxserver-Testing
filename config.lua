@@ -39,11 +39,7 @@ expertPvp = false
 -- Version Manual
 clientVersionMin = 1098
 clientVersionMax = 1099
-<<<<<<< HEAD
-clientVersionStr = "10.99"
-=======
 clientVersionStr = "Only clients with protocol 10.98/99 or allowed!"
->>>>>>> origin/master
 
 -- Depot Limit
 freeDepotLimit = 2000
