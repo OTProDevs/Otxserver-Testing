@@ -1,6 +1,3 @@
-STONE_SKIN_AMULET = 2197
-ITEM_STORE_INBOX = 26052
-
 function getAccountNumberByPlayerName(name)
 	local player = Player(name)
 	if player ~= nil then

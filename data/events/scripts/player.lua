@@ -2,6 +2,10 @@
 -- Players cannot throw items on teleports if set to true
 local blockTeleportTrashing = true
 
+-- Internal Use
+STONE_SKIN_AMULET = 2197
+ITEM_STORE_INBOX = 26052
+
 function Player:onBrowseField(position)
 	return true
 end
@@ -423,25 +427,24 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		end
 	end
 
+	--[[-- Do not stop trying this test
 	-- No move parcel very heavy
 	if item:getWeight() > 90000 and item:getId() == ITEM_PARCEL then 
 		self:sendCancelMessage('YOU CANNOT MOVE PARCELS TOO HEAVY.')
 		return false 
 	end
 
-	--[[-- Do not stop trying this test
-		-- No move if item count > 26 items
-		if tile and tile:getItemCount() > 26 then
-			self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
-			return false
-		end
+	-- No move if item count > 26 items
+	-- local tile = Tile(toPosition)
+	if tile and tile:getItemCount() > 26 then
+		self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+		return false
+	end
 
-		if tile and tile:getItemById(370) then -- Trapdoor
-			self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
-			self:getPosition():sendMagicEffect(CONST_ME_POFF)
-			return false
-		end
-	]]
-
+	if tile and tile:getItemById(370) then -- Trapdoor
+		self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+		self:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return false
+	end ]]
 	return true
 end
