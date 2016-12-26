@@ -135,7 +135,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			if skin.newItem == 7446 then
 				player:addAchievement('Ice Sculptor')
 			end
-			player:addItem(skin.newItem, skin.amount or 1)
+			player:addItem(skin.newItem, 1)
 			effect = CONST_ME_HITAREA
 		else
 			player:addItem(skin.newItem, skin.amount or 1)
