@@ -243,7 +243,26 @@ end
 
 local exhaust = { } -- SSA exhaust
 function Player:onMoveItem(item, count, fromPosition, toPosition)
+	--[[ Store Inbox ]]--
+	local containerIdFrom = fromPosition.y - 64
+	local containerFrom = self:getContainerById(containerIdFrom)
+	if (containerFrom) then
+		if (containerFrom:getId() == 26052 and
+			toPosition.y >= 1 and
+			toPosition.y <= 11 and
+			toPosition.y ~= 3) then
+			self:sendCancelMessage("You need to move the item for your backpack first.")
+			return false
+		end
+	end
 
+	local containerTo = self:getContainerById(toPosition.y-64)
+	if (containerTo) then
+		if (containerTo:getId() == 26052) then
+			self:sendCancelMessage("You cannot add items in the store inbox.")
+			return false
+		end
+	end
 --- LIONS ROCK START 
 
 if self:getStorageValue(lionrock.storages.playerCanDoTasks) - os.time() < 0 then
