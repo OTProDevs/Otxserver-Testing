@@ -1548,3 +1548,25 @@ ALTER TABLE `tile_store`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Tabela e Trigger pra registrar histórico de login de char, com ip e hora --
+CREATE TABLE IF NOT EXISTS char_login_history(
+	id int not null auto_increment,  
+	player_id int not null, 
+	datahora datetime, 
+	ip varchar(46), 
+	
+	primary key(id), 
+	foreign key (player_id) references players(id)
+);
+
+DELIMITER // 
+CREATE TRIGGER `login_history_trigger` BEFORE UPDATE ON `players` 
+	FOR EACH ROW 
+	BEGIN 
+		IF NEW.lastlogin>OLD.lastlogin THEN 
+			INSERT INTO char_login_history(player_id, datahora, ip) VALUES (OLD.id, NOW(), INET_NTOA(NEW.lastip)); 
+		END IF; 
+	END;
+	//
+DELIMITER ;
